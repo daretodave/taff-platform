@@ -4,13 +4,13 @@ variable "default-environment-name" {
   default = "develop"
 }
 
-variable "default-service-web-formation-size" {
+variable "app-compute-profile" {
   type = string
 
   default = "Standard-1x"
 }
 
-variable "default-service-web-formation-quantity" {
+variable "app-compute-hosts" {
   type = number
 
   default = 1
@@ -25,11 +25,11 @@ variable "default-service-web-build-packs" {
   ]
 }
 
-variable "default-service-web-build-source" {
+variable "src" {
   type = any
   description = "The build info."
 
-  default = {}
+  default = "service"
 }
 
 variable "default-service-team-name" {
