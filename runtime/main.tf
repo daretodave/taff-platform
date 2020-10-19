@@ -2,7 +2,6 @@ terraform {
   required_providers {
     heroku = {
       source = "heroku/heroku"
-      version = "2.6.0"
     }
   }
   backend "remote" {
@@ -16,8 +15,13 @@ terraform {
 provider "heroku" {
 }
 
+variable "example_app_name" {
+  version = "~> 2.0"
+}
+
+
 resource "heroku_app" "this" {
-  name   = "taff-platform-test-app"
+ name = "${var.example_app_name}"
   region = "us"
 }
 
