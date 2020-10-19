@@ -1,15 +1,15 @@
 terraform {
-  required_providers {
-    heroku = {
-      source = "heroku/heroku"
-    }
-  }
   backend "remote" {
     organization = "taff"
     workspaces {
       name = "ci-develop"
     }
   }
+}
+
+provider "heroku" {
+  version = "~> 2.0"
+  source = "heroku/heroku"
 }
 
 variable "example_app_name" {
