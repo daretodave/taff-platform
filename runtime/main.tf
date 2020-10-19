@@ -2,7 +2,7 @@ terraform {
   required_providers {
     heroku = {
       source = "heroku/heroku"
-      version = "2.6.1"
+      version = "2.3.0"
     }
   }
   backend "remote" {
@@ -13,9 +13,7 @@ terraform {
   }
 }
 
-provider "heroku" {
-  version = "~> 2.0"
-}
+provider "heroku" {}
 
 resource "heroku_app" "this" {
   name   = "taff-platform-test-app"
