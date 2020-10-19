@@ -27,6 +27,11 @@ variable "service-team-name" {
   description = "The team to deploy services under."
 }
 
+variable "service-app-label-prefix" {
+  type        = string
+  description = "The name prefix."
+}
+
 variable "service-app-label" {
   type        = string
   description = "The suffix when building the build and app names."

@@ -10,7 +10,7 @@ terraform {
 provider "heroku" {}
 
 locals {
-  service-name = "${var.service-team-name}-${var.service-app-label}"
+  service-name = "${var.service-app-label-prefix}${var.service-app-label}"
 }
 
 resource "heroku_app" "this" {
