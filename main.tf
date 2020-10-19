@@ -2,7 +2,7 @@ terraform {
   required_providers {
     heroku = {
       source = "heroku/heroku"
-      version = "~> 2.0"
+      version = "2.6.0"
     }
   }
   backend "remote" {
@@ -14,7 +14,6 @@ terraform {
 }
 
 provider "heroku" {
-  version = "~> 2.0"
 }
 
 variable "example_app_name" {
