@@ -54,5 +54,32 @@ variable "default-service-name-prefix" {
 }
 
 
+variable "base" {
+  default = {
+    name: "edge",
+    size: 2,
+    host: "Standard-1x",
+    pipe: {
+      ENV: "develop"
+    },
+    region: "us"
+  }
+  type         = any
+  description = "The service env base"
+}
 
+
+variable "target" {
+  default = [{
+      name: "edge",
+      size: 2,
+      host: "Standard-1x",
+      pipe: {
+        ENV: "develop"
+      },
+      region: "us"
+    }]
+  type         = any
+  description = "The service env/target"
+}
 
