@@ -28,9 +28,9 @@ resource "heroku_app" "this" {
 
 resource "heroku_build" "this" {
   app = heroku_app.this.name
-  buildpacks = ["https://github.com/heroku/heroku-buildpack-nodejs.git"]
   source = {
-    path = "test"
+    path = "test/service"
+
   }
 }
 
