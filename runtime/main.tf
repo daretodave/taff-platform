@@ -1,3 +1,7 @@
+provider "heroku" {
+  version = "~> 2.0"
+}
+
 terraform {
   backend "remote" {
     organization = "taff"
@@ -7,9 +11,7 @@ terraform {
   }
 }
 
-provider "heroku" {
-  version = "~> 2.5"
-}
+
 
 variable "example_app_name" {
   default = "taff-platform-example-app"
