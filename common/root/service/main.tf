@@ -10,7 +10,7 @@ terraform {
 provider "heroku" {}
 
 locals {
-  service-name = "${var.service-app-label-prefix}${var.service-app-label}"
+  service-name = "${var.service-app-name-prefix}-${var.service-app-name}"
 }
 
 resource "heroku_app" "this" {
@@ -25,7 +25,9 @@ resource "heroku_app" "this" {
 resource "heroku_build" "this" {
   app = heroku_app.this.name
   buildpacks = var.service-web-build-packs
-  source = var.service-web-build-source
+  source = {
+    path = var.service-web-build-source
+  }
 }
 
 resource "heroku_formation" "this" {

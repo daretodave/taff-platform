@@ -36,7 +36,7 @@ variable "default-service-team-name" {
   type = string
   description = "The team to deploy services under."
 
-  default = "taff"
+  default = "taff-service"
 }
 
 
@@ -46,6 +46,13 @@ variable "default-service-app-region" {
 
   default = "us"
 }
+
+
+variable "default-service-name-prefix" {
+  type = string
+  default = "taff"
+}
+
 
 
 

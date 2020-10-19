@@ -13,7 +13,7 @@ variable "service-web-formation" {
 variable "service-web-build-source" {
   type        = any
   description = "The build info."
-  default = {}
+  default = 'service'
 }
 
 variable "service-web-build-packs" {
@@ -27,12 +27,12 @@ variable "service-team-name" {
   description = "The team to deploy services under."
 }
 
-variable "service-app-label-prefix" {
+variable "service-app-name-prefix" {
   type        = string
   description = "The name prefix."
 }
 
-variable "service-app-label" {
+variable "service-app-name" {
   type        = string
   description = "The suffix when building the build and app names."
 }
