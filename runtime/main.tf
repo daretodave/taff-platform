@@ -8,8 +8,7 @@ terraform {
 }
 
 provider "heroku" {
-  version = "~> 2.0"
-  source = "heroku/heroku"
+  version = "~> 2.5"
 }
 
 variable "example_app_name" {
