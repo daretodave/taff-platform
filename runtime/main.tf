@@ -12,10 +12,6 @@ terraform {
   }
 }
 
-provider "heroku" {
-  version = "~> 2.0"
-}
-
 variable "example_app_name" {
   default = "taff-platform-example-app"
 }
