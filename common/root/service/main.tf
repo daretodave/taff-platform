@@ -35,11 +35,13 @@ resource "heroku_formation" "this" {
 
   app = heroku_app.this[each.key].name
   type       = "web"
-  quantity   =  each.value.service-web-formation.size
-  size       = each.value.service-web-formation.host
-  depends_on = [heroku_build.this]
+  quantity   =  each.value.service-web-formation.host
+  size       = each.value.service-web-formation.size
 }
 
-output "web_url" {
-  value = "https://${heroku_app.this.name}.herokuapp.com"
+output "web_urls" {
+  value = {
+  for instance in heroku_app.this:
+  instance.name => instance
+  }
 }

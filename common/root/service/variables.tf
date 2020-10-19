@@ -28,16 +28,17 @@ variable "service-app-name" {
 
 
 variable "targets" {
-  type = any
-  default = [
-    {
-      service-app-name-suffix = "edge",
-      service-app-region = "us",
-      service-web-formation = {
-        size = 2,
-        host = "Standard-1x",
+  type = map(any)
+  default = {
+      edge = {
+        service-app-name-suffix = "edge",
+        service-app-region = "us",
+        service-web-formation = {
+          host = 2,
+          size = "Standard-1x",
+        }
       }
     }
-  ]
+
 }
 
