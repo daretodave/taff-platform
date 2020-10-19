@@ -18,7 +18,7 @@ provider "heroku" {
 }
 
 resource "heroku_app" "this" {
-  name   = "test-app"
+  name   = "taff-platform-test-app"
   region = "us"
 }
 
