@@ -25,6 +25,15 @@ module "server" {
     service-web-build-source = var.src
   }]
 
+  service-team-name = var.default-service-team-name
+  service-app-region = var.default-service-app-region
+  service-app-name-prefix = var.default-service-name-prefix
+  service-app-name = var.name
+  service-web-formation = {
+    size = var.app-compute-hosts
+    quantity = var.app-compute-profile
+  }
+  service-web-build-packs = var.default-service-web-build-packs
+  service-web-build-source = var.src
 }
-
 

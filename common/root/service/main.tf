@@ -9,13 +9,11 @@ terraform {
 
 provider "heroku" {}
 
-locals {
-  service-name = "${var.service-app-name-prefix}-${var.service-app-name}-${var.service-app-name-suffix}"
-}
-
 resource "heroku_app" "this" {
-  name = local.service-name
-  region = var.service-app-region
+  for_each = var.targets
+
+  name = "${var.service-app-name-prefix}-${var.service-app-name}-${each.value.service-app-name-suffix}"
+  region = each.value.service-app-region
 
   organization {
     name =  var.service-team-name
@@ -23,7 +21,9 @@ resource "heroku_app" "this" {
 }
 
 resource "heroku_build" "this" {
-  app = heroku_app.this.name
+  for_each = var.targets
+
+  app = heroku_app.this[each.key].name
   buildpacks = var.service-web-build-packs
   source = {
     path = var.service-web-build-source
@@ -31,10 +31,12 @@ resource "heroku_build" "this" {
 }
 
 resource "heroku_formation" "this" {
-  app        = heroku_app.this.name
+  for_each = var.targets
+
+  app = heroku_app.this[each.key].name
   type       = "web"
-  quantity   = var.service-web-formation.quantity
-  size       = var.service-web-formation.size
+  quantity   =  each.value.service-web-formation.size
+  size       = each.value.service-web-formation.host
   depends_on = [heroku_build.this]
 }
 
