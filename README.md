@@ -5,6 +5,7 @@
 - terraform CLI
 
 #### platform runtime: heroku
+> the team and heroku root account should be created manually before proceeding
 
 build developer authorization
 ```bash
