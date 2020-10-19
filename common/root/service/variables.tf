@@ -11,9 +11,9 @@ variable "service-web-formation" {
 }
 
 variable "service-web-build-source" {
-  type        = any
+  type        = string
   description = "The build info."
-  default = 'service'
+  default = "service"
 }
 
 variable "service-web-build-packs" {
