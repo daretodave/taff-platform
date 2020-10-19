@@ -22,16 +22,21 @@ resource "heroku_app" "this" {
 }
 
 resource "heroku_build" "this" {
-  depends_on = []
-  app = heroku_app.this.id
+  app = "${heroku_app.this.name}"
+  buildpacks = ["https://github.com/heroku/heroku-buildpack-nodejs.git"]
   source = {
-    path = "../test"
-  }
-  provisioner "local-exec" {
-    command = "bash ../scripts/health-check ${heroku_app.this.web_url}"
+     path = "../test"
   }
 }
 
+resource "heroku_formation" "this" {
+  app        = "${heroku_app.this.name}"
+  type       = "web"
+  quantity   = 1
+  size       = "Standard-1x"
+  depends_on = ["heroku_build.this"]
+}
+
 output "web_url" {
-  value = heroku_app.this.web_url 
+   value = "https://${heroku_app.this.name}.herokuapp.com"
 }
