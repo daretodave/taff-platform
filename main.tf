@@ -28,12 +28,9 @@ resource "heroku_app" "this" {
 
 resource "heroku_build" "this" {
   app = heroku_app.this.name
-  buildpacks = ["https://github.com/mars/create-react-app-buildpack"]
-
+  buildpacks = ["https://github.com/heroku/heroku-buildpack-nodejs.git"]
   source = {
-    # This app uses a community buildpack, set it in `buildpacks` above.
-    url     = "https://github.com/mars/cra-example-app/archive/v2.1.1.tar.gz"
-    version = "v2.1.1"
+    path = "test"
   }
 }
 
