@@ -17,7 +17,7 @@ provider "heroku" {
 }
 
 variable "example_app_name" {
-  default = 'taff-platform-example-app'
+  default = "taff-platform-example-app"
 }
 
 
